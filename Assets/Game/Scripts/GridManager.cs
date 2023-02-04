@@ -12,8 +12,8 @@ public class GridManager : MonoBehaviour
     Dictionary<Vector2, Hexagon> tiles = new Dictionary<Vector2, Hexagon>();
 
     // Spacing values
-    public static float xDist = 1.5f;
-    public static float yDist = 1.3f;
+    public static float xDist = 3.2f;
+    public static float yDist = 0.9f;
 
     void Start()
     {
@@ -32,7 +32,7 @@ public class GridManager : MonoBehaviour
 
                 var spawnedTile = Instantiate(_tilePrefab);
 
-                spawnedTile.transform.position = new Vector3(x * xDist, y * yDist);
+                spawnedTile.transform.position = new Vector3(x * xDist, 0, y * yDist);
 
                 if (y % 2 == 0)
                     spawnedTile.transform.position += new Vector3(xDist / 2, 0);
