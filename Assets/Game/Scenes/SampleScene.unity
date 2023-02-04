@@ -349,6 +349,13 @@ MonoBehaviour:
   _height: 30
   _tilePrefab: {fileID: -7833904341673991548, guid: 7a821170b50ac5e498107fb1ee38c7a5, type: 3}
   tileParent: {fileID: 548065193}
+  spreadTime: 7
+  materials:
+  - {fileID: 2100000, guid: a2872dfe9a8f9ed44b5b6c0c362bf648, type: 2}
+  - {fileID: 2100000, guid: 763e40170e9f78d4fb68e3d441f5e9de, type: 2}
+  - {fileID: 2100000, guid: e490906599815224885624a5ba07c555, type: 2}
+  - {fileID: 2100000, guid: 0981c7765ddd95248a9f831e0ea91619, type: 2}
+  - {fileID: 2100000, guid: 38ae828301757fb48a384ca370e0de64, type: 2}
 --- !u!114 &548065195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstWall: {fileID: 0}
+  cash: 1000000
   maxCash: 2000
   cashReduceAmount: 250
   cashIncreaseAmount: 250
@@ -496,8 +504,8 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.6509434, g: 0.6509434, b: 0.6509434, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

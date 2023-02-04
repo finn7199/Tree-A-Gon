@@ -17,20 +17,29 @@ public class Hexagon : MonoBehaviour
         downRight,
         left
     }
-    public enum Colors { red, green, yellow};
+
+    public enum Colors { 
+        None = 0, 
+        Red, 
+        Green, 
+        Yellow,
+        Wall
+    };
+
     public Colors currentColor;
 
     public bool isOccupied = false;
-
-    public bool planted = false;
 
     public bool isWall = false;
 
     public Hexagon[] borders;
 
-    [SerializeField] Material wallMaterial;
-
+    [Header("Assignables")]
     [SerializeField] MeshRenderer meshRenderer;
+    [SerializeField] MeshRenderer treeMesh;
+
+    public Spread spread;
+    public GameObject tree;
 
     /// <summary>
     /// Finds borders by using index
@@ -66,9 +75,18 @@ public class Hexagon : MonoBehaviour
         borders[(int)TileBorder.left] = GridManager.Instance.GetTileByIndex(tilePos + new Vector2(-x, 0));     // left
     }
 
-    private void OnMouseDown() {    
-        Debug.Log("clicked");
+    public void ChangeColour(Colors colour) {
+        currentColor = colour;
+        meshRenderer.material = GridManager.Instance.materials[(int)colour];
+        treeMesh.material = GridManager.Instance.materials[(int)colour];
 
+        if (colour == Colors.Wall || colour == Colors.None) {
+            spread.enabled = false;
+            tree.SetActive(false);
+        }
+    }
+
+    private void OnMouseDown() {    
         if (PlaceWalls.instance.cash <= 0)
             return;
 
@@ -83,7 +101,6 @@ public class Hexagon : MonoBehaviour
         if (PlaceWalls.instance.cash <= 0)
             return;
 
-        Debug.Log("entered");
         ConvertToWall();
     }
 
@@ -92,19 +109,21 @@ public class Hexagon : MonoBehaviour
     }
 
     void ConvertToWall() {
+        if (isWall)
+            return;
+
         StartCoroutine(WallConversion());
     }
 
     IEnumerator WallConversion() {
-        Material mat = meshRenderer.material;
-        meshRenderer.material = wallMaterial;
+        ChangeColour(Colors.Wall);
         isOccupied = true;
         isWall = true;
         PlaceWalls.instance.ReduceCash();
 
         yield return new WaitForSeconds(10);
 
-        meshRenderer.material = mat;
+        ChangeColour(Colors.None);
         isOccupied = false;
         isWall = false;
     }

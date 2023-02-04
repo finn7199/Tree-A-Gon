@@ -1,86 +1,80 @@
 using UnityEngine;
 
 public class Spread : MonoBehaviour {
-    
+
     public Hexagon hexagon;
     public GameObject tree;
 
-    private void Start() {
-        Invoke(nameof(SpreadFunc), 5);
+    private void OnEnable() {
+        Invoke(nameof(SpreadFunc), GridManager.Instance.spreadTime);
     }
 
     void SpreadFunc() {
+        if (hexagon.isWall)
+            return;
+
         if (hexagon.isOccupied) {
+            bool flag = true;
+
             for (int i = 0; i < 6; i++) {
-                if (!hexagon.borders[i].isOccupied && !hexagon.borders[i].planted) {
-                    Instantiate(tree, hexagon.borders[i].transform.position + new Vector3(0, 2, 0), Quaternion.identity);
-                    hexagon.borders[i].planted = true;
+                if (hexagon.borders[i] == null)
+                    continue;
+
+                if (!hexagon.borders[i].isOccupied) 
+                    flag = false;
+
+                if (!hexagon.borders[i].isOccupied) {
+                    hexagon.borders[i].tree.SetActive(true);
                     hexagon.borders[i].isOccupied = true;
-                    hexagon.borders[i].GetComponent<Spread>().enabled = true;
+                    hexagon.borders[i].ChangeColour(hexagon.currentColor);
+                    hexagon.borders[i].spread.enabled = true;
 
-                    break; 
+                    break;
                 }
+            }
 
+            if (flag) {
+                EatColour(Hexagon.Colors.Red, Hexagon.Colors.Green);
+                EatColour(Hexagon.Colors.Green, Hexagon.Colors.Yellow);
+                EatColour(Hexagon.Colors.Yellow, Hexagon.Colors.Red);
             }
         }
+
         float rand = Random.Range(-100, 100);
         rand /= 100;
 
-        Invoke(nameof(SpreadFunc), 5 + rand * 2);
+        Invoke(nameof(SpreadFunc), GridManager.Instance.spreadTime + rand * 2);
     }
 
-
-    void CheckForColor()
-    {
+    void CheckForColor() {
         bool flag = true;
-        if (hexagon.isOccupied)
-        {
-            for(int i=0; i<6; i++)
-            {
-                if (!hexagon.borders[i].isOccupied)
-                {
+        if (hexagon.isOccupied) {
+            for (int i = 0; i < 6; i++) {
+                if (!hexagon.borders[i].isOccupied) {
                     flag = false;
                 }
             }
         }
 
-        if (flag)
-        {
-            if (hexagon.currentColor == Hexagon.Colors.red)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    if (hexagon.borders[i].currentColor == Hexagon.Colors.green)
-                    {
-                        TakeOver(i, Hexagon.Colors.red);
-                    }
-                }
-            }
-            else if (hexagon.currentColor == Hexagon.Colors.green)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    if (hexagon.borders[i].currentColor == Hexagon.Colors.yellow)
-                    {
-                        TakeOver(i, Hexagon.Colors.green);
-                    }
-                }
-            }
-            else if (hexagon.currentColor == Hexagon.Colors.yellow)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    if (hexagon.borders[i].currentColor == Hexagon.Colors.red)
-                    {
-                        TakeOver(i, Hexagon.Colors.yellow);
-                    }
-                }
-            }
+        if (flag) {
+            EatColour(Hexagon.Colors.Red, Hexagon.Colors.Green);
+            EatColour(Hexagon.Colors.Green, Hexagon.Colors.Yellow);
+            EatColour(Hexagon.Colors.Yellow, Hexagon.Colors.Red);
         }
     }
 
-    void TakeOver(int i, Hexagon.Colors color)
-    {
-        hexagon.borders[i].currentColor = color;
+    void EatColour(Hexagon.Colors eater, Hexagon.Colors eaten) {
+        if (hexagon.currentColor == eater)
+            for (int i = 0; i < 6; i++) {
+                if (hexagon.borders[i] == null)
+                    continue;
+
+                if (hexagon.borders[i].currentColor == eaten)
+                    TakeOver(i, eater);
+            }
+    }
+
+    void TakeOver(int i, Hexagon.Colors color) {
+        hexagon.borders[i].ChangeColour(color);
     }
 }

@@ -10,7 +10,7 @@ public class PlaceWalls : MonoBehaviour
 
     public Hexagon firstWall = null;
 
-    public int cash { get; private set; } = 1000;
+    public int cash = 1000;
 
     [SerializeField] int maxCash = 2000;
 

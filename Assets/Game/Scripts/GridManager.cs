@@ -11,9 +11,13 @@ public class GridManager : MonoBehaviour
 
     Dictionary<Vector2, Hexagon> tiles = new Dictionary<Vector2, Hexagon>();
 
+    public float spreadTime = 10f;
+
     // Spacing values
     public static float xDist = 3.2f;
     public static float yDist = 0.9f;
+
+    public Material[] materials;
 
     void Start()
     {
