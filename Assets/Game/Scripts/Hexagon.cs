@@ -17,6 +17,8 @@ public class Hexagon : MonoBehaviour
         downRight,
         left
     }
+    public enum Colors { red, green, yellow};
+    public Colors currentColor;
 
     public bool isOccupied = false;
 

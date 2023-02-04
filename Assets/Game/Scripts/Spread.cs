@@ -1,6 +1,7 @@
 using UnityEngine;
 
 public class Spread : MonoBehaviour {
+    
     public Hexagon hexagon;
     public GameObject tree;
 
@@ -19,12 +20,38 @@ public class Spread : MonoBehaviour {
 
                     break; 
                 }
+
             }
         }
-
         float rand = Random.Range(-100, 100);
         rand /= 100;
 
         Invoke(nameof(SpreadFunc), 5 + rand * 2);
+    }
+
+    void TakeOver()
+    {
+        bool flag = true;
+        if (hexagon.isOccupied)
+        {
+            for(int i=0; i<6; i++)
+            {
+                if (!hexagon.borders[i].isOccupied)
+                {
+                    flag = false;
+                }
+            }
+        }
+
+        if (flag)
+        {
+            if (hexagon.currentColor == Hexagon.Colors.red)
+            {
+                for (int i = 0; i < 6; i++)
+                {
+
+                }
+            }
+        }
     }
 }
