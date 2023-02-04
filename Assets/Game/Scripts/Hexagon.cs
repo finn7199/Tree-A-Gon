@@ -91,6 +91,7 @@ public class Hexagon : MonoBehaviour
             spread.enabled = true;
             tree.SetActive(true);
             isOccupied = true;
+            PlaceWalls.instance.IncreaseCash();
         }
     }
 

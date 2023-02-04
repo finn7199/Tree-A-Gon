@@ -24,11 +24,7 @@ public class Spread : MonoBehaviour {
                     flag = false;
 
                 if (!hexagon.borders[i].isOccupied) {
-                    hexagon.borders[i].tree.SetActive(true);
-                    hexagon.borders[i].isOccupied = true;
                     hexagon.borders[i].ChangeColour(hexagon.currentColor);
-                    hexagon.borders[i].spread.enabled = true;
-
                     break;
                 }
             }

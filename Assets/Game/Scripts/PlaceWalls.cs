@@ -20,7 +20,7 @@ public class PlaceWalls : MonoBehaviour
     [SerializeField] TMP_Text cashText;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         instance = this;
         cashText.text = cash.ToString();

@@ -30,10 +30,13 @@ public class GridManager : MonoBehaviour
     public static float xDist = 3.2f;
     public static float yDist = 0.9f;
 
+    private void Awake() {
+        Instance = this;
+    }
+
     void Start()
     {
         totalCount = _width * _height;
-        Instance = this;
         GenerateGrid();
     }
 
@@ -104,6 +107,6 @@ public class GridManager : MonoBehaviour
             }
         }
 
-        totalCount = redCount + greenCount + yellowCount;
+        //totalCount = redCount + greenCount + yellowCount;
     }
 }

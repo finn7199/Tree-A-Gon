@@ -491,7 +491,7 @@ RectTransform:
   - {fileID: 1401311827}
   - {fileID: 429785644}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -926,10 +926,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstWall: {fileID: 0}
-  cash: 999999
+  cash: 0
   maxCash: 2000
   cashReduceAmount: 250
-  cashIncreaseAmount: 250
+  cashIncreaseAmount: 150
   cashText: {fileID: 1086664152}
 --- !u!114 &548065196
 MonoBehaviour:
@@ -1339,6 +1339,73 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811041557}
   m_CullTransparentMesh: 1
+--- !u!1 &904314526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 904314528}
+  - component: {fileID: 904314527}
+  - component: {fileID: 904314529}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &904314527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904314526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d76beed8bc4908e489710dad9b55def3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &904314528
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904314526}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &904314529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904314526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db0716eb322aea49bc6137d2abb8cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: Tutorial
+    sentences:
+    - The trees increase over time. Each tree can give birth to a new tree IF it
+      has empty space around it
+    - If there is no space, the tree will check around it to make a tree of a different
+      colour to be its own colour
+    - It will TAKE OVER that tree in that scenario
+    - Your goal is to match the Current Tree Ratio to the Target Ratio
+    - 'The Current Tree Ratio is the '
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -2143,7 +2210,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1336906341
 GameObject:
