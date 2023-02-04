@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Hexagon : MonoBehaviour
@@ -19,7 +20,15 @@ public class Hexagon : MonoBehaviour
 
     public bool isOccupied = false;
 
+    public bool planted = false;
+
+    public bool isWall = false;
+
     public Hexagon[] borders;
+
+    [SerializeField] Material wallMaterial;
+
+    [SerializeField] MeshRenderer meshRenderer;
 
     /// <summary>
     /// Finds borders by using index
@@ -53,5 +62,48 @@ public class Hexagon : MonoBehaviour
         borders[(int)TileBorder.downLeft] = GridManager.Instance.GetTileByIndex(tilePos + new Vector2(-x / 2, -y));     // down left
         borders[(int)TileBorder.downRight] = GridManager.Instance.GetTileByIndex(tilePos + new Vector2(x / 2, -y));     // down right
         borders[(int)TileBorder.left] = GridManager.Instance.GetTileByIndex(tilePos + new Vector2(-x, 0));     // left
+    }
+
+    private void OnMouseDown() {    
+        Debug.Log("clicked");
+
+        if (PlaceWalls.instance.cash <= 0)
+            return;
+
+        PlaceWalls.instance.firstWall = this;
+        ConvertToWall();
+    }
+
+    private void OnMouseEnter() {
+        if (PlaceWalls.instance.firstWall == null)
+            return;
+
+        if (PlaceWalls.instance.cash <= 0)
+            return;
+
+        Debug.Log("entered");
+        ConvertToWall();
+    }
+
+    private void OnMouseUp() {
+        PlaceWalls.instance.firstWall = null;
+    }
+
+    void ConvertToWall() {
+        StartCoroutine(WallConversion());
+    }
+
+    IEnumerator WallConversion() {
+        Material mat = meshRenderer.material;
+        meshRenderer.material = wallMaterial;
+        isOccupied = true;
+        isWall = true;
+        PlaceWalls.instance.ReduceCash();
+
+        yield return new WaitForSeconds(10);
+
+        meshRenderer.material = mat;
+        isOccupied = false;
+        isWall = false;
     }
 }
