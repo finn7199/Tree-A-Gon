@@ -19,10 +19,10 @@ public class GridManager : MonoBehaviour
 
     public Material[] materials;
 
-    int redCount = 0;
-    int yellowCount = 0;
-    int greenCount = 0;
-    int totalCount = 0;
+    public int redCount = 0;
+    public int yellowCount = 0;
+    public int greenCount = 0;
+    public int totalCount = 0;
 
     public Dictionary<Vector2, Hexagon> tiles = new Dictionary<Vector2, Hexagon>();
 
@@ -35,6 +35,10 @@ public class GridManager : MonoBehaviour
         totalCount = _width * _height;
         Instance = this;
         GenerateGrid();
+    }
+
+    private void Update() {
+        QuickMaths();
     }
 
     /// <summary>
@@ -80,25 +84,26 @@ public class GridManager : MonoBehaviour
 
     void QuickMaths()
     {
+        redCount = 0;
+        greenCount= 0;
+        yellowCount = 0;
+
         foreach (var item in tiles)
         {
             if(item.Value.currentColor == Hexagon.Colors.Red)
             {
                 redCount++;
             }
-            if (item.Value.currentColor == Hexagon.Colors.Green)
+            else if (item.Value.currentColor == Hexagon.Colors.Green)
             {
                 greenCount++;
             }
-            if (item.Value.currentColor == Hexagon.Colors.Yellow)
+            else if (item.Value.currentColor == Hexagon.Colors.Yellow)
             {
                 yellowCount++;
             }
         }
 
-        int redPercent = redCount / totalCount * 100;
-        int greenPercent = greenCount / totalCount * 100;
-        int yellowPercent = yellowCount / totalCount * 100;
+        totalCount = redCount + greenCount + yellowCount;
     }
-    
 }
