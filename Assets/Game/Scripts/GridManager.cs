@@ -5,6 +5,7 @@ public class GridManager : MonoBehaviour
 {
     public static GridManager Instance;
 
+    public static bool isPaused = false;
     public float spreadTime = 10f;
     public float wallTime = 10f;
 

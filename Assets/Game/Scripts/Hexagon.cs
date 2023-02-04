@@ -95,7 +95,10 @@ public class Hexagon : MonoBehaviour
         }
     }
 
-    private void OnMouseDown() {    
+    private void OnMouseDown() {
+        if (GridManager.isPaused)
+            return;
+
         if (PlaceWalls.instance.cash <= 0)
             return;
 
