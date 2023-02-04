@@ -29,6 +29,7 @@ public class Spread : MonoBehaviour {
         Invoke(nameof(SpreadFunc), 5 + rand * 2);
     }
 
+
     void CheckForColor()
     {
         bool flag = true;
@@ -51,7 +52,7 @@ public class Spread : MonoBehaviour {
                 {
                     if (hexagon.borders[i].currentColor == Hexagon.Colors.green)
                     {
-                        TakeOver();
+                        TakeOver(i, Hexagon.Colors.red);
                     }
                 }
             }
@@ -61,7 +62,7 @@ public class Spread : MonoBehaviour {
                 {
                     if (hexagon.borders[i].currentColor == Hexagon.Colors.yellow)
                     {
-                        TakeOver();
+                        TakeOver(i, Hexagon.Colors.green);
                     }
                 }
             }
@@ -71,15 +72,15 @@ public class Spread : MonoBehaviour {
                 {
                     if (hexagon.borders[i].currentColor == Hexagon.Colors.red)
                     {
-                        TakeOver();
+                        TakeOver(i, Hexagon.Colors.yellow);
                     }
                 }
             }
         }
     }
 
-    void TakeOver()
+    void TakeOver(int i, Hexagon.Colors color)
     {
-
+        hexagon.borders[i].currentColor = color;
     }
 }
