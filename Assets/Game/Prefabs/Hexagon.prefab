@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3051727254777589647}
   - component: {fileID: 5319789514376667376}
   - component: {fileID: 3416917777560188374}
+  - component: {fileID: 1604760828792882247}
   m_Layer: 0
   m_Name: Hexagon
   m_TagString: Untagged
@@ -50,6 +51,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOccupied: 0
+  planted: 0
+  isWall: 0
   borders:
   - {fileID: 0}
   - {fileID: 0}
@@ -689,3 +692,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &1604760828792882247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507703257224612829}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ceb84546e9e705449cf2e2c75aaebb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hexagon: {fileID: -7833904341673991548}
+  tree: {fileID: 8230507592146119686, guid: ddab4bc9b6824c1489decbf5c81300a0, type: 3}
