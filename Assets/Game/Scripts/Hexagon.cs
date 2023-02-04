@@ -48,13 +48,16 @@ public class Hexagon : MonoBehaviour
         int x = Int32.Parse(name.Split(' ')[0]);
         int y = Int32.Parse(name.Split(' ')[1]);
 
-        borders[(int)TileBorder.topLeft] = GridManager.Instance.GetTileByIndex(new Vector2(x, y + 1));     // top left
-        borders[(int)TileBorder.topRight] = GridManager.Instance.GetTileByIndex(new Vector2(x + 1, y + 1));     // top right
-        borders[(int)TileBorder.right] = GridManager.Instance.GetTileByIndex(new Vector2(x + 1, y));     // right
+        int offTop = y % 2 == 0 ? 1 : 0; 
+        int offBot = y % 2 == 0 ? 0 : -1;
 
-        borders[(int)TileBorder.downLeft] = GridManager.Instance.GetTileByIndex(new Vector2(x, y - 1));     // down left
-        borders[(int)TileBorder.downRight] = GridManager.Instance.GetTileByIndex(new Vector2(x + 1, y - 1));     // down right
-        borders[(int)TileBorder.left] = GridManager.Instance.GetTileByIndex(new Vector2(x - 1, y));     // left
+        borders[(int)TileBorder.topLeft] = GridManager.Instance.GetTileByIndex(new Vector2(x + offTop, y + 1));     // top left
+        borders[(int)TileBorder.topRight] = GridManager.Instance.GetTileByIndex(new Vector2(x + offTop, y - 1));     // top right
+        borders[(int)TileBorder.right] = GridManager.Instance.GetTileByIndex(new Vector2(x, y - 2));     // right
+
+        borders[(int)TileBorder.downLeft] = GridManager.Instance.GetTileByIndex(new Vector2(x + offBot, y + 1));     // down left
+        borders[(int)TileBorder.downRight] = GridManager.Instance.GetTileByIndex(new Vector2(x + offBot, y - 1));     // down right
+        borders[(int)TileBorder.left] = GridManager.Instance.GetTileByIndex(new Vector2(x, y + 2));     // left
     }
 
     /// <summary>
@@ -83,6 +86,11 @@ public class Hexagon : MonoBehaviour
         if (colour == Colors.Wall || colour == Colors.None) {
             spread.enabled = false;
             tree.SetActive(false);
+        }
+        else {
+            spread.enabled = true;
+            tree.SetActive(true);
+            isOccupied = true;
         }
     }
 
@@ -121,7 +129,7 @@ public class Hexagon : MonoBehaviour
         isWall = true;
         PlaceWalls.instance.ReduceCash();
 
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(GridManager.Instance.wallTime);
 
         ChangeColour(Colors.None);
         isOccupied = false;

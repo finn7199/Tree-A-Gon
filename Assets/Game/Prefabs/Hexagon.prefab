@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3659848508911303640}
   - component: {fileID: -7833904341673991548}
+  - component: {fileID: 1604760828792882247}
   - component: {fileID: 7423974621523643368}
   - component: {fileID: 7573275717613717888}
   - component: {fileID: 3051727254777589647}
   - component: {fileID: 5319789514376667376}
   - component: {fileID: 3416917777560188374}
-  - component: {fileID: 1604760828792882247}
   m_Layer: 0
   m_Name: Hexagon
   m_TagString: Untagged
@@ -65,6 +65,20 @@ MonoBehaviour:
   treeMesh: {fileID: 6298222505389783040}
   spread: {fileID: 1604760828792882247}
   tree: {fileID: 6298222504098306839}
+--- !u!114 &1604760828792882247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507703257224612829}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ceb84546e9e705449cf2e2c75aaebb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hexagon: {fileID: -7833904341673991548}
+  tree: {fileID: 8230507592146119686, guid: ddab4bc9b6824c1489decbf5c81300a0, type: 3}
 --- !u!114 &7423974621523643368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,7 +609,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 18
+  m_VersionIndex: 21
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -695,20 +709,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &1604760828792882247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1507703257224612829}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ceb84546e9e705449cf2e2c75aaebb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hexagon: {fileID: -7833904341673991548}
-  tree: {fileID: 8230507592146119686, guid: ddab4bc9b6824c1489decbf5c81300a0, type: 3}
 --- !u!1001 &2692982100354725649
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -311,6 +311,7 @@ GameObject:
   - component: {fileID: 548065193}
   - component: {fileID: 548065194}
   - component: {fileID: 548065195}
+  - component: {fileID: 548065196}
   m_Layer: 0
   m_Name: GridManager
   m_TagString: Untagged
@@ -345,11 +346,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78f2cbfc288de9b4fb58f13570c20297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spreadTime: 1
+  wallTime: 10
   _width: 10
   _height: 30
   _tilePrefab: {fileID: -7833904341673991548, guid: 7a821170b50ac5e498107fb1ee38c7a5, type: 3}
   tileParent: {fileID: 548065193}
-  spreadTime: 7
+  levelCreator: {fileID: 548065196}
   materials:
   - {fileID: 2100000, guid: a2872dfe9a8f9ed44b5b6c0c362bf648, type: 2}
   - {fileID: 2100000, guid: 763e40170e9f78d4fb68e3d441f5e9de, type: 2}
@@ -374,6 +377,24 @@ MonoBehaviour:
   cashReduceAmount: 250
   cashIncreaseAmount: 250
   cashText: {fileID: 1086664152}
+--- !u!114 &548065196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548065192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 941b1e7298827334b845a5cda574a627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redX: 0
+  redY: 0
+  greenX: 1
+  greenY: 19
+  yellowX: 2
+  yellowY: 5
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

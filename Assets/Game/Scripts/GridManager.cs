@@ -5,24 +5,30 @@ public class GridManager : MonoBehaviour
 {
     public static GridManager Instance;
 
-    [SerializeField] int _width, _height;
+    public float spreadTime = 10f;
+    public float wallTime = 10f;
+
+    [Header("Grid Values")]
+    [SerializeField] int _width;
+    [SerializeField] int _height;
+
+    [Header("Assignables")]
     [SerializeField] Hexagon _tilePrefab;
     [SerializeField] Transform tileParent;
+    [SerializeField] LevelCreator levelCreator;
+
+    public Material[] materials;
 
     int redCount = 0;
     int yellowCount = 0;
     int greenCount = 0;
     int totalCount = 0;
 
-    Dictionary<Vector2, Hexagon> tiles = new Dictionary<Vector2, Hexagon>();
-
-    public float spreadTime = 10f;
+    public Dictionary<Vector2, Hexagon> tiles = new Dictionary<Vector2, Hexagon>();
 
     // Spacing values
     public static float xDist = 3.2f;
     public static float yDist = 0.9f;
-
-    public Material[] materials;
 
     void Start()
     {
@@ -56,6 +62,8 @@ public class GridManager : MonoBehaviour
         // Assigning data for borders
         foreach (var key in tiles.Keys)
             tiles[key].SetDirectionData();
+
+        levelCreator.SpawnTrees();
     }
 
     /// <summary>
