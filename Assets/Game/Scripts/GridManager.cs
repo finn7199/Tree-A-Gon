@@ -9,6 +9,11 @@ public class GridManager : MonoBehaviour
     [SerializeField] Hexagon _tilePrefab;
     [SerializeField] Transform tileParent;
 
+    int redCount = 0;
+    int yellowCount = 0;
+    int greenCount = 0;
+    int totalCount = 0;
+
     Dictionary<Vector2, Hexagon> tiles = new Dictionary<Vector2, Hexagon>();
 
     public float spreadTime = 10f;
@@ -21,6 +26,7 @@ public class GridManager : MonoBehaviour
 
     void Start()
     {
+        totalCount = _width * _height;
         Instance = this;
         GenerateGrid();
     }
@@ -62,4 +68,29 @@ public class GridManager : MonoBehaviour
             return tiles[pos];
         return null;
     }
+
+
+    void QuickMaths()
+    {
+        foreach (var item in tiles)
+        {
+            if(item.Value.currentColor == Hexagon.Colors.Red)
+            {
+                redCount++;
+            }
+            if (item.Value.currentColor == Hexagon.Colors.Green)
+            {
+                greenCount++;
+            }
+            if (item.Value.currentColor == Hexagon.Colors.Yellow)
+            {
+                yellowCount++;
+            }
+        }
+
+        int redPercent = redCount / totalCount * 100;
+        int greenPercent = greenCount / totalCount * 100;
+        int yellowPercent = yellowCount / totalCount * 100;
+    }
+    
 }
