@@ -19,6 +19,11 @@ public class LevelCreator : MonoBehaviour
     [SerializeField] float greenRatio = 0.25f;
     [SerializeField] float yellowRatio = 0.25f;
 
+    [Header("Pie Chart Sprites")]
+    [SerializeField] Image red;
+    [SerializeField] Image green;
+    [SerializeField] Image yellow;
+
     [Header("Assignables")]
     [SerializeField] GameObject winScreen;
 
@@ -77,6 +82,10 @@ public class LevelCreator : MonoBehaviour
         bool r = rPercent < redRatio + error && rPercent > redRatio - error;
         bool g = gPercent < greenRatio + error && rPercent > greenRatio - error;
         bool y = yPercent < yellowRatio + error && rPercent > yellowRatio - error;
+
+        //Update pie chart values
+        green.fillAmount = gPercent + yPercent;
+        yellow.fillAmount = yPercent;
 
         if (r && g && y) {
             float val = Time.time - timeSinceRatio;

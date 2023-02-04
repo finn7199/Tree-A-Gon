@@ -108,6 +108,6 @@ public class GridManager : MonoBehaviour
             }
         }
 
-        //totalCount = redCount + greenCount + yellowCount;
+        totalCount = redCount + greenCount + yellowCount;
     }
 }
