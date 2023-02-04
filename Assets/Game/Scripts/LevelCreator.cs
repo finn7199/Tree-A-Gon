@@ -26,6 +26,7 @@ public class LevelCreator : MonoBehaviour
 
     [Header("Assignables")]
     [SerializeField] GameObject winScreen;
+    [SerializeField] GameObject pieChart;
 
     [SerializeField] TMP_Text redText;
     [SerializeField] TMP_Text greenText;
@@ -63,10 +64,18 @@ public class LevelCreator : MonoBehaviour
     void CheckIfWinning() {
         float error = 0.1f;
 
+        if ((float)GridManager.Instance.totalPieCount / GridManager.Instance.totalCount > 0.75f)
+            pieChart.SetActive(true);
+
         // Gets percentage of trees
         float rPercent = (float)GridManager.Instance.redCount / GridManager.Instance.totalCount;
         float gPercent = (float)GridManager.Instance.greenCount / GridManager.Instance.totalCount;
         float yPercent = (float)GridManager.Instance.yellowCount / GridManager.Instance.totalCount;
+
+        // Get Pie Percentage of Trees
+        float rPercentP = (float)GridManager.Instance.redCount / GridManager.Instance.totalPieCount;
+        float gPercentP = (float)GridManager.Instance.greenCount / GridManager.Instance.totalPieCount;
+        float yPercentP = (float)GridManager.Instance.yellowCount / GridManager.Instance.totalPieCount;
 
         // sets text
         redText.text = "Red: " + (int)(rPercent * 100) + "%";
@@ -80,14 +89,15 @@ public class LevelCreator : MonoBehaviour
 
         // Checks if trees are within ratio
         bool r = rPercent < redRatio + error && rPercent > redRatio - error;
-        bool g = gPercent < greenRatio + error && rPercent > greenRatio - error;
-        bool y = yPercent < yellowRatio + error && rPercent > yellowRatio - error;
+        bool g = gPercent < greenRatio + error && gPercent > greenRatio - error;
+        bool y = yPercent < yellowRatio + error && yPercent > yellowRatio - error;
 
         //Update pie chart values
-        green.fillAmount = gPercent + yPercent;
-        yellow.fillAmount = yPercent;
+        green.fillAmount = gPercentP + yPercentP;
+        yellow.fillAmount = yPercentP;
 
         if (r && g && y) {
+            Debug.Log("Place");
             float val = Time.time - timeSinceRatio;
             winSlider.value = val;
             if (val > timeTakenToWin)

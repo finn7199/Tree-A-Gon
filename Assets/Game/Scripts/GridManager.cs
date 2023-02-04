@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GridManager : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class GridManager : MonoBehaviour
     public int redCount = 0;
     public int yellowCount = 0;
     public int greenCount = 0;
+    public int totalPieCount = 0;
     public int totalCount = 0;
 
     public Dictionary<Vector2, Hexagon> tiles = new Dictionary<Vector2, Hexagon>();
@@ -108,6 +110,10 @@ public class GridManager : MonoBehaviour
             }
         }
 
-        totalCount = redCount + greenCount + yellowCount;
+        totalPieCount = redCount + greenCount + yellowCount;
+    }
+
+    public void Retry() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
