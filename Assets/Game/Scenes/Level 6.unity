@@ -515,6 +515,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2818223124866157180, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5187630151165410002, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6248103452674415678, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -542,6 +550,18 @@ PrefabInstance:
     - target: {fileID: 6248103452794899274, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248103452874138726, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
+      propertyPath: _width
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248103452874138726, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
+      propertyPath: spreadTime
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248103452874138727, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
+      propertyPath: maxCash
+      value: 6000
       objectReference: {fileID: 0}
     - target: {fileID: 6248103453019326775, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
       propertyPath: m_AnchorMax.y
@@ -733,6 +753,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6248103454381913893, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6464044683496158340, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
+      propertyPath: m_text
+      value: 'YOU WIN!
+
+
+        A Game by
+
+        Shourish Adhicary - Designer
+
+        Shamil
+        M - Programmer
+
+
+
+        Thanks for Playing'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9113358626213172954, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

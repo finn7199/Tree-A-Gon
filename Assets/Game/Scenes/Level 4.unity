@@ -271,7 +271,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -295,7 +295,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: -0.3138524, y: -0.6350661, z: 0.31575495, w: -0.6312579}
-  m_LocalPosition: {x: -3.9409614, y: 12.708372, z: 8.89271}
+  m_LocalPosition: {x: -5.7778244, y: 11.318564, z: 8.714958}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -543,9 +543,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6248103452874138720, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
+      propertyPath: redRatio
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248103452874138720, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
+      propertyPath: greenRatio
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 6248103452874138720, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
+      propertyPath: yellowRatio
+      value: 0.33
+      objectReference: {fileID: 0}
     - target: {fileID: 6248103452874138726, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
       propertyPath: _width
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6248103452874138726, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
       propertyPath: spreadTime
@@ -629,11 +641,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6248103453689885970, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 461.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6248103453689885970, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 259.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6248103453689885970, guid: 5490097d2e5818341b9c6315356557e0, type: 3}
       propertyPath: m_LocalPosition.z

@@ -39,6 +39,7 @@ public class LevelCreator : MonoBehaviour
     [SerializeField] Slider winSlider;
 
     private void Start() {
+        Time.timeScale = 1;
         winSlider.minValue = 0;
         winSlider.maxValue = timeTakenToWin;
 
@@ -97,7 +98,6 @@ public class LevelCreator : MonoBehaviour
         yellow.fillAmount = yPercentP;
 
         if (r && g && y) {
-            Debug.Log("Place");
             float val = Time.time - timeSinceRatio;
             winSlider.value = val;
             if (val > timeTakenToWin)
@@ -111,10 +111,10 @@ public class LevelCreator : MonoBehaviour
 
     void WinGame() {
         winScreen.SetActive(true);
-        Invoke(nameof(GoToNextScene), 10);
+        Time.timeScale = 0f;
     }
 
-    void GoToNextScene() {
+    public void GoToNextScene() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

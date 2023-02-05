@@ -42,23 +42,6 @@ public class Spread : MonoBehaviour {
         Invoke(nameof(SpreadFunc), GridManager.Instance.spreadTime + rand * 2);
     }
 
-    void CheckForColor() {
-        bool flag = true;
-        if (hexagon.isOccupied) {
-            for (int i = 0; i < 6; i++) {
-                if (!hexagon.borders[i].isOccupied) {
-                    flag = false;
-                }
-            }
-        }
-
-        if (flag) {
-            EatColour(Hexagon.Colors.Red, Hexagon.Colors.Green);
-            EatColour(Hexagon.Colors.Green, Hexagon.Colors.Yellow);
-            EatColour(Hexagon.Colors.Yellow, Hexagon.Colors.Red);
-        }
-    }
-
     void EatColour(Hexagon.Colors eater, Hexagon.Colors eaten) {
         if (hexagon.currentColor == eater)
             for (int i = 0; i < 6; i++) {
