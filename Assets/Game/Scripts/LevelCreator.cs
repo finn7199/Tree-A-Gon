@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class LevelCreator : MonoBehaviour
 {
@@ -24,6 +25,11 @@ public class LevelCreator : MonoBehaviour
     [SerializeField] Image green;
     [SerializeField] Image yellow;
 
+    [Header("Target Pie Chart Sprites")]
+    [SerializeField] Image redTarget;
+    [SerializeField] Image greenTarget;
+    [SerializeField] Image yellowTarget;
+
     [Header("Assignables")]
     [SerializeField] GameObject winScreen;
     [SerializeField] GameObject pieChart;
@@ -35,6 +41,12 @@ public class LevelCreator : MonoBehaviour
     [SerializeField] TMP_Text redTextTarget;
     [SerializeField] TMP_Text greenTextTarget;
     [SerializeField] TMP_Text yellowTextTarget;
+    
+    [SerializeField] TMP_Text timeTakenText;
+
+    [SerializeField] TMP_Text timeText;
+    float time;
+    float startTime;
 
     [SerializeField] Slider winSlider;
 
@@ -46,10 +58,21 @@ public class LevelCreator : MonoBehaviour
         redTextTarget.text = "Red: " + (int)(redRatio * 100) + "%";
         greenTextTarget.text = "Green: " + (int)(greenRatio * 100) + "%";
         yellowTextTarget.text = "Yellow: " + (int)(yellowRatio * 100) + "%";
+
+        //Update pie chart values
+        greenTarget.fillAmount = greenRatio + yellowRatio;
+        yellowTarget.fillAmount = yellowRatio;
+
+        startTime = Time.time;
     }
     
     private void Update() {
         CheckIfWinning();
+
+        time = Time.time - startTime;
+        TimeSpan t = TimeSpan.FromSeconds(time);
+        string s = string.Format("{0:D2} : {1:D2}", t.Minutes, t.Seconds);
+        timeText.text = s;
     }
 
     public void SpawnTrees() {
@@ -111,6 +134,7 @@ public class LevelCreator : MonoBehaviour
 
     void WinGame() {
         winScreen.SetActive(true);
+        timeTakenText.text = "Completed in " + timeText.text;
         Time.timeScale = 0f;
     }
 
